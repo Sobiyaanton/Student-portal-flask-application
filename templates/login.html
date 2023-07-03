@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login Page</title>
+  <link rel="stylesheet" href="../static/css/style.css">
+
+</head>
+<body>
+    <header>
+    <nav class="navbar">
+      <div class="logo">
+        <img src="../static/img/logo.png" alt="Logo">
+      </div>
+      <ul class="menu">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+  {{msg}}
+  <div class="container">
+    <div class="form-container common-form" >
+      <h1>Login</h1>
+      <form method="post" action="/check">
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input class="form-control" type="email" name="email">
+        </div>
+        <div class="form-group">
+             <label for="password">Password:</label>
+            <input class="form-control" type="password" name="password">
+        </div>
+        <div class="form-group">
+            <button type="submit" class="submit-button">Login</button>
+        </div>
+        <div class="form-group">
+          <a href="#" class="forgot">Forgot your email?</a><br><br>
+          <a href="#" class="forgot">Forgot your password?</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

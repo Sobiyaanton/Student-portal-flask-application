@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Profile Edit</title>
+  <link rel="stylesheet" href="../static/css/style.css">
+
+</head>
+<body>
+    <header>
+    <nav class="navbar">
+      <div class="logo">
+        <img src="../static/img/logo.png" alt="Logo">
+      </div>
+      <ul class="menu">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="{{ url_for('logout') }}">Logout</a></li>
+      </ul>
+    </nav>
+  </header>
+
+    <div class="container">
+        <div class="form-container common-form">
+            <h1>Edit your profile here!</h1>
+
+            <form action="/update-profile" method="POST" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="full_name">Full Name:</label>
+                    <input type="text" id="full_name" name="full_name" value="{{students.full_name}}" required><br>
+                </div>
+
+                <div class="form-group">
+                    <label for="registration_number">Registration number:</label>
+                    <input type="number" id="registration_number" name="registration_number" value="{{students.registration_number}}" min="1000" max="9999" readonly><br>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" value="{{students.email}}" readonly><br>
+                </div>
+
+                <div class="form-group">
+                    <label for="degree">Degree programme:</label>
+                    <select id="degree" name="degree" required>
+                        <option value="" disabled>Select Degree</option>
+                        <option value="Bsc Computer Science and Engineering" {% if students.degree == "Bsc Computer Science and Engineering" %} selected {% endif %}>Bsc Computer Science and Engineering</option>
+                        <option value="Bsc Mechanical Engineering" {% if students.degree == "Bsc Mechanical Engineering" %} selected {% endif %}>Bsc Mechanical Engineering</option>
+                        <option value="Bsc Civil Engineering" {% if students.degree == "Bsc Civil Engineering" %} selected {% endif %}>Bsc Civil Engineering</option>
+                        <option value="Bsc Electrical Engineering" {% if students.degree == "Bsc Electrical Engineering" %} selected {% endif %}>Bsc Electrical Engineering</option>
+                    </select><br>
+                </div>
+
+                <div class="form-group">
+                    <label for="contact_number">Contact No:</label>
+                    <input type="tel" id="contact_number" name="contact_number" value="{{students.contact_number}}" pattern="[0-9]{10}" required><br>
+                </div>
+
+                <div class="form-group">
+                    <label for="introduction">Introduction:</label>
+                    <textarea id="introduction" name="introduction" rows="4" cols="55" required>{{students.introduction}}</textarea><br>
+                </div>
+
+                <div class="form-group">
+                    <label for="skills">Skills:</label>
+                    <textarea id="skills" name="skills" rows="4" cols="55" required>{{students.skills}}</textarea><br>
+                </div>
+                
+               <div class="form-group">
+                    <label for="profile_picture">Profile Picture:</label>
+                    {% if students.profile_image_url %}
+                        <img class="profile-image" src="{{ students.profile_image_url }}" alt="Profile Picture">
+                    {% else %}
+                        <p>No profile picture found.</p>
+                    {% endif %}
+                </div>
+
+                <div class="form-group">
+                    <label for="myimage">Choose a new Profile Picture:</label>
+                    <input type="file" name="myimage" accept="image/*"><br><br>
+                </div>
+                
+                <div class="form-group">
+                <button type="submit" class="submit-button">Update</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

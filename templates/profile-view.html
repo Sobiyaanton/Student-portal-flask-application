@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Profile View</title>
+  <link rel="stylesheet" href="../static/css/style.css">
+
+</head>
+<body>
+    <header>
+    <nav class="navbar">
+      <div class="logo">
+        <img src="../static/img/logo.png" alt="Logo">
+      </div>
+      <ul class="menu">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="{{ url_for('logout') }}">Logout</a></li>
+      </ul>
+    </nav>
+  </header>
+
+    <div class="container">
+        <div class="form-container common-form">
+            <h1>Profile View</h1>
+              {% if students.profile_image_url %}
+                <img  class="profile-image" src="{{ students.profile_image_url }}" alt="Profile Picture">
+              {% else %}
+                <p>No profile picture found.</p>
+              {% endif %}
+            {% if students %}
+              <p><strong>Full Name:</strong> {{ students.full_name }}</p>
+              <p><strong>Registration Number:</strong> {{ students.registration_number }}</p>
+              <p><strong>Email:</strong> {{ students.email }}</p>
+              <p><strong>Degree:</strong> {{ students.degree }}</p>
+              <p><strong>Contact Number:</strong> {{ students.contact_number }}</p>
+              <p><strong>Introduction:</strong> {{ students.introduction }}</p>
+              <p><strong>Skills:</strong> {{ students.skills }}</p>
+              
+            {% else %}
+              <p>No student data found.</p>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
